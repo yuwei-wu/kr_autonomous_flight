@@ -316,6 +316,10 @@ bool validate_yaw(const Primitive<Dim>& pr, decimal_t my) {
   return true;
 }
 
+template<class T>
+const T& clamp(const T& x, const T& upper, const T& lower) {
+    return std::min(upper, std::max(x, lower));
+}
 /**
  * @brief Check if the velocity direction is within sensor vertical FOV
  * @param fov is sensor vertical semi-fov
@@ -329,7 +333,7 @@ bool validate_vel_dir(const Primitive<Dim>& pr, decimal_t vfov) {
   }
 
   // clip value to lie in 0 ~ pi/2
-  vfov = std::clamp(vfov, 0.00, 1.57);
+  vfov = clamp(vfov, 0.00, 1.57);
 
   // check max vertical velocity angle, compare with vfov
   decimal_t vx_max, vy_max, vz_max;

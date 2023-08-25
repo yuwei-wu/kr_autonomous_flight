@@ -1,5 +1,5 @@
-robot_r: 1.5 # sim: 0.5 # robot radius, local and global maps will be dilated in x and y with a radius of [ceil(robot_r/res)] cells
-robot_h: 1.0 # sim: 0.25 # robot height, local and global maps will be dilated in z direction for 2*[ceil(robot_h/res)] cells (if robot_r is set as 0, there will not be any dilation along z either).
+robot_r: 0.5 # exp: 1.5 sim: 0.5 # robot radius, local and global maps will be dilated in x and y with a radius of [ceil(robot_r/res)] cells
+robot_h: 0.25 # exp: 1.0 sim: 0.25 # robot height, local and global maps will be dilated in z direction for 2*[ceil(robot_h/res)] cells (if robot_r is set as 0, there will not be any dilation along z either).
 
 # global mapper config
 global:
@@ -12,8 +12,8 @@ global:
   resolution: 1.0 # resolution of the map (high impact on memory and computation usage, recommended value: 1.0~2.0 for sparse environments, 0.5 for dense environments) 
   num_point_cloud_skip: 3 # the global map update frequency = point cloud frequency / num_point_cloud_skip
   max_raycast_range: 30.0 # max raycast range, the smaller, the less computation demand, but shorter perception range
-  dilate_xy: true # dilate global map along x and y axis (recommended value: true)
-  dilate_z: true # dilate global map along z axis (recommended value: false)
+  dilate_xy: false # dilate global map along x and y axis (recommended value: true)
+  dilate_z: false # dilate global map along z axis (recommended value: false)
   decay_times_to_empty: 15 # number of times of decay to empty, 0 means no decay, the noisier your state estimator is, the smaller this value should be (when using ground-truth pose, set this as 0)
 
 local: # local map range z and center_z will be the same as storage map
